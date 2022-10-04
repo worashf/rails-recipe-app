@@ -1,8 +1,13 @@
-<h1>Recipes#index</h1>
+<main class='container justify-content-center pt-4'>
+  <h1 class='text-center mb-5'>Recipes</h1>
 
-<% @recipes.each do |recipe| %>
-<h2><%= recipe.name %></h2>
-<h2><%= recipe.preparation_time %></h2>
-<h2><%= recipe.cooking_time %></h2>
-<h2><%= recipe.description %></h2>
-<% end %>
+<div class='border p-3 rounded shadow'>
+<div class='mb-3'>
+  <%= link_to 'New Recipe', new_recipe_path%>
+</div>
+
+  <% @recipes.each do |recipe| %>
+      <%= render 'recipe_card', recipe: recipe %>
+  <% end %>
+  </div>
+</main>

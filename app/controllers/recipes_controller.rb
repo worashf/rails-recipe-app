@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @current_user = User.first
     @recipe = Recipe.new
   end
 
