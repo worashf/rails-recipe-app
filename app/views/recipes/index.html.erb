@@ -1,0 +1,13 @@
+<main class='container justify-content-center pt-4'>
+  <h1 class='text-center mb-5'>Recipes</h1>
+
+<div class='border p-3 rounded shadow'>
+<div class='mb-3'>
+  <%= link_to 'New Recipe', new_recipe_path%>
+</div>
+
+  <% @recipes.each do |recipe| %>
+      <%= render 'recipe_card', recipe: recipe %>
+  <% end %>
+  </div>
+</main>
