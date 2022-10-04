@@ -1,0 +1,14 @@
+<%= form_with(model: food) do |f|%>
+<div class="d-flex flex-column align-items-center w-50 justify-content-center m-auto">
+<%= f.label :name,class: "text-primary mb-2" %>
+<%= f.text_field :name, class: "form-control mb-3",placeholder: "Enter food name" %>
+<%= f.label :measurment_unit, class: "text-primary mb-2" %>
+<%= f.text_field :measurment_unit, class: "form-control mb-3", placeholder: "Enter measurment unit"%>
+<%= f.label :price, class: "text-primary"  %>
+<%= f.number_field :price, class: "form-control mb-3", placeholder: "Enter  price" %>
+<%= f.label :quantity, class: "text-primary"  %>
+<%= f.number_field :quantity, class: "form-control", placeholder: "Enter  quantity" %>
+<%= f.submit "Save", class: "btn btn-primary w-50 mt-3"%>
+</div>
+
+<%end%>
