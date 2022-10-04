@@ -7,18 +7,10 @@ default: &default
 development:
   <<: *default
   database: recipe_app_dev_db
-  username: postgres
-  password: mnte
-  host: localhost
-  port: 5432
 
 test:
   <<: *default
   database: recipe_app_test_db
-  username: postgres
-  password: mnte
-  host: localhost
-  port: 5432
 
 production:
   <<: *default
