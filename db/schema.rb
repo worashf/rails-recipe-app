@@ -37,10 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_112528) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
-    t.integer "preparation_time"
-    t.integer "cooking_time"
+    t.decimal "preparation_time"
+    t.decimal "cooking_time"
     t.text "description"
-    t.boolean "public"
+    t.boolean "public", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
