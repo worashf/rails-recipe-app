@@ -23,7 +23,7 @@
 
     <div class='d-flex justify-content-between p-2 mb-2'>
       <button type="button" class="btn btn-outline-primary">Generate shpping list</button>
-      <% if user_signed_in? && (current_user == food_recipe.recipe.user) %>
+      <% if user_signed_in? && (current_user == @recipe.user) %>
         <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: "btn btn-outline-primary" %>
       <% end %>
     </div>
@@ -35,7 +35,7 @@
             <th scope="col">Food</th>
             <th scope="col">Quantity</th>
             <th scope="col">Value</th>
-            <% if user_signed_in? && (current_user == food_recipe.recipe.user) %>
+            <% if user_signed_in? && (current_user == @recipe.user) %>
               <th scope="col" class='text-center'>Action</th>
             <% end %>
           </tr>
