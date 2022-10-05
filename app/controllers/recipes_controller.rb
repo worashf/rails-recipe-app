@@ -3,13 +3,18 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def new
-    @current_user = User.first
     @recipe = Recipe.new
   end
 
   def create
     recipe = Recipe.new(recipe_parametters)
+    @user = current_user
+    recipe.user = @user
 
     if recipe.save
       flash[:success] = 'Recipe created successfully!'
@@ -20,9 +25,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    redirect_to recipes_path
+  end
+
   private
 
   def recipe_parametters
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

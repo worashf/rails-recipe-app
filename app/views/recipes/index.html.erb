@@ -3,7 +3,9 @@
 
 <div class='border p-3 rounded shadow'>
 <div class='mb-3'>
+<% if user_signed_in? %>
   <%= link_to 'New Recipe', new_recipe_path%>
+<% end %>
 </div>
 
   <% @recipes.each do |recipe| %>
