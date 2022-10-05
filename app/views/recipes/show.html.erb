@@ -44,7 +44,8 @@
               <td>$<%= food_recipe.food.price * food_recipe.quantity %> </td>
               <td class='d-flex justify-content-around'>
                 <button type="button" class="btn btn-primary">Modify</button>
-                <button type="button" class="btn btn-primary">Remove</button>
+
+                <%= button_to 'Remove', recipe_recipe_food_path(food_recipe.recipe.id, food_recipe.id), method: :delete, class: 'btn btn-primary' %>
               </td>
             </tr>
           <% end %>
