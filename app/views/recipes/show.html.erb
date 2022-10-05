@@ -1,0 +1,45 @@
+<main class='container'>
+  <h1><%= @recipe.name %></h1>
+
+  <div>
+    <div>
+      <p>Preparation time: <%= @recipe.preparation_time%> hour</p>
+    </div>
+
+    <div>
+      <p>Cooking time: <%= @recipe.cooking_time %> hour<p>
+    </div>
+
+    <div>
+      <p>Steps: <%= @recipe.description %><p>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-primary">Generate shpping list</button>
+      <button type="button" class="btn btn-primary">Add ingredients</button>
+    </div>
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Value</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Apple</th>
+              <td>2 Units</td>
+              <td>3.00</td>
+              <td>
+                <button type="button" class="btn btn-primary">Modify</button>
+                <button type="button" class="btn btn-primary">Remove</button>
+              </td>
+          </tr>
+    </div>
+
+  </div>
+</main>
