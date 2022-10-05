@@ -1,11 +1,13 @@
 <main class='container justify-content-center pt-4'>
-  <h1 class='text-center mb-5'>Recipes</h1>
+  <h1 class='text-center mb-5'><strong><u>Recipes</u></strong></h1>
 
 <div class='border p-3 rounded shadow'>
 <div class='mb-3'>
-<% if user_signed_in? %>
-  <%= link_to 'New Recipe', new_recipe_path%>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'New Recipe', new_recipe_path%>
+  <% else %>
+    <p class='text-primary text-center bold'><strong><u>Sign in to create a new Recipe or access to the Private Recipes</u></strong><p>
+  <% end %>
 </div>
 
   <% @recipes.each do |recipe| %>
