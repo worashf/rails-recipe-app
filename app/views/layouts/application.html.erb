@@ -14,19 +14,11 @@
   </head>
 
   <body>
-    <% flash.each do |type, msg| %>
-        <div class="alert <%= type %>">
-          <%= msg %>
-        </div>
-    <% end %>
-
-    <p class="text-success"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  <div class =" bg-white">
-  <%= render 'shared/header' %>
-  <p class="text-success"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class =" bg-white">
+      <%= render 'shared/header' %>
+      <p class="text-success"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
     </div>
   </body>
 </html>
