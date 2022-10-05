@@ -9,6 +9,8 @@ class RecipesController < ApplicationController
 
   def create
     recipe = Recipe.new(recipe_parametters)
+    @user = User.first
+    recipe.user = @user
 
     if recipe.save
       flash[:success] = 'Recipe created successfully!'
@@ -22,6 +24,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_parametters
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
