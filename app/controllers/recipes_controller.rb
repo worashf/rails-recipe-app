@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   def create
     recipe = Recipe.new(recipe_parametters)
-    @user = User.first
+    @user = current_user
     recipe.user = @user
 
     if recipe.save
