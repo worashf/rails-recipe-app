@@ -1,9 +1,16 @@
 <main class='container'>
-  <h1><%= @recipe.name %></h1>
+  <h1 class='text-center'><%= @recipe.name %></h1>
 
-  <div>
-    <div>
+  <div class='border p-3 rounded shadow'>
+    <div class='d-flex justify-content-between'>
       <p>Preparation time: <%= @recipe.preparation_time%> hour</p>
+      <div>
+        <% if @recipe.public %>
+          <span class="badge text-bg-warning p-2 px-4">Public</span>
+        <% else %>
+          <span class="badge text-bg-primary p-2 px-4">Private</span>
+        <% end %>
+      </div>
     </div>
 
     <div>
@@ -14,9 +21,9 @@
       <p>Steps: <%= @recipe.description %><p>
     </div>
 
-    <div>
-      <button type="button" class="btn btn-primary">Generate shpping list</button>
-      <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: "btn btn-primary" %>
+    <div class='d-flex justify-content-between p-2'>
+      <button type="button" class="btn btn-outline-primary">Generate shpping list</button>
+      <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: "btn btn-outline-primary" %>
     </div>
 
     <div>
@@ -26,7 +33,7 @@
             <th scope="col">Food</th>
             <th scope="col">Quantity</th>
             <th scope="col">Value</th>
-            <th scope="col">Action</th>
+            <th scope="col" class='text-center'>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +41,7 @@
             <th scope="row">Apple</th>
               <td>2 Units</td>
               <td>3.00</td>
-              <td>
+              <td class='d-flex justify-content-around'>
                 <button type="button" class="btn btn-primary">Modify</button>
                 <button type="button" class="btn btn-primary">Remove</button>
               </td>
