@@ -34,6 +34,10 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def public
+    @public_recipes = Recipe.all.where(public: true)
+  end
+
   private
 
   def recipe_parametters
