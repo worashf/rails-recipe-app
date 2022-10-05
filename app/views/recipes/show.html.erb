@@ -37,15 +37,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Apple</th>
-              <td>2 Units</td>
-              <td>3.00</td>
+          <% @food_recipe.each do |food_recipe|%>
+            <tr>
+              <th> <%= food_recipe.food.name%> </th>
+              <td> <%= food_recipe.quantity %> <%= food_recipe.food.measurment_unit %> </td>
+              <td>$<%= food_recipe.food.price * food_recipe.quantity %> </td>
               <td class='d-flex justify-content-around'>
                 <button type="button" class="btn btn-primary">Modify</button>
                 <button type="button" class="btn btn-primary">Remove</button>
               </td>
-          </tr>
+            </tr>
+          <% end %>
+        </tbody>
     </div>
 
   </div>
