@@ -8,13 +8,13 @@
           <%= link_to recipe_path(recipe.id) do %>
             <h2 class='mb-3'><%= recipe.name %></h2>
           <% end %>
-          <span>by <%= recipe.user.name %></span>
+        <h5 class ="text-info">  <span class= "text-primary">by </span><%= recipe.user.name %></h5>
         </div>
         <div class='col-6 d-flex flex-column justify-content-center'>
           <% @recipe_prices.each do |recipe_food| %>
             <% if recipe.id == recipe_food[:rec_id]%>
               <p>Total items: <%= recipe_food[:items] %></p>
-              <p>Total price: <%= recipe_food[:price] %></p>
+              <p>Total price: $<%= recipe_food[:price] %></p>
             <% end %>
           <% end %>
         </div>
