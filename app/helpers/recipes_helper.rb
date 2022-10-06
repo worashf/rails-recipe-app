@@ -1,7 +1,7 @@
 module RecipesHelper
   def public_recipes_stats
     recip_stats = []
-    public_recipes = Recipe.all.where(public: true)
+    public_recipes = Recipe.includes(:user).where(public: true).order(created_at: :desc)
 
     public_recipes.each do |recipe|
       recipe_food = recipe.recipe_food

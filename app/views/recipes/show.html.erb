@@ -41,15 +41,15 @@
           </tr>
         </thead>
         <tbody>
-          <% @food_recipe.each do |food_recipe|%>
+          <% @recipe_foods.each do |ingridient|%>
             <tr>
-              <th> <%= food_recipe.food.name%> </th>
-              <td> <%= food_recipe.quantity %> <%= food_recipe.food.measurment_unit %> </td>
-              <td> <%= food_recipe.food.price * food_recipe.quantity %> </td>
-              <% if user_signed_in? && (current_user == food_recipe.recipe.user) %>
+              <th> <%= ingridient.food.name%> </th>
+              <td> <%= ingridient.quantity %> <%= ingridient.food.measurment_unit %> </td>
+              <td> $<%= ingridient.food.price * ingridient.quantity %> </td>
+              <% if user_signed_in? && (current_user == ingridient.recipe.user) %>
                 <td class='d-flex justify-content-around'>
-                  <%= button_to 'Modify', edit_recipe_recipe_food_path(food_recipe.recipe.id, food_recipe.id), method: :get, class: 'btn btn-primary' %>
-                  <%= button_to 'Remove', recipe_recipe_food_path(food_recipe.recipe.id, food_recipe.id), method: :delete, class: 'btn btn-primary' %>
+                  <%= button_to 'Modify', edit_recipe_recipe_food_path(ingridient.recipe.id, ingridient.id), method: :get, class: 'btn btn-primary' %>
+                  <%= button_to 'Remove', recipe_recipe_food_path(ingridient.recipe.id, ingridient.id), method: :delete, class: 'btn btn-primary' %>
                 </td>
               <% end %>
             </tr>
