@@ -1,0 +1,21 @@
+<%= form_with(url: recipe_recipe_foods_path, class: 'container') do |form| %>
+
+<%= form.hidden_field :recipe_id, value: @recipe.id%>
+
+<div class="border rounded p-3 shadow">
+    <div class="col-12 mb-3">
+      <%= form.label :food, class: 'form-label' %>
+      <%= form.select :food_id, current_user.foods.collect { |food| [food.name, food.id] } %>
+    </div> 
+
+    <div class="col-12 mb-3">
+      <%= form.label :quantity, class: 'form-label' %>
+      <%= form.number_field :quantity, class: 'form-control', placeholder: 1, min: 1, required: true %>
+    </div> 
+
+    <div class="col-12 mt-3 text-end align-baseline">
+      <%= link_to '< Back', recipe_path(@recipe), class:'btn btn-outline-danger'%>
+      <%= form.submit 'Save', class: 'btn btn-primary text-light ms-3' %>
+    </div>
+  </div>
+<% end %>
