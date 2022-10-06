@@ -3,7 +3,7 @@
 
       <td><%= food.name %></td>
       <td><%= food.measurment_unit %></td>
-      <td>    <%= food.price %></td>
+      <td>  $  <%= food.price %></td>
            <td>    <%= food.quantity %></td>
            <td>  <%= button_to "Delete", food, method: :delete, class: "btn btn-danger" %> </td>
            <td> <%= link_to "Show", food, class: "btn btn-primary" %> </td>
