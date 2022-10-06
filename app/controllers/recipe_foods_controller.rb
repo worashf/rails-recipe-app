@@ -51,15 +51,14 @@ class RecipeFoodsController < ApplicationController
   end
 
   def shopping_list
-    @foods = Food.includes(:recipe_food).where(user_id: current_user.id).where(recipe_food: { food_id: nil })
-    @shopping_list = []
+    recipe = cookies[:recipe_id]
+    @recipe_foods = RecipeFood.all.where(recipe_id: recipe)
     @total_value = 0
+    @items_count = @recipe_foods.count
 
-    @foods.each do |food|
-      @shopping_list << food
-      @total_value += food.quantity * food.price
+    @recipe_foods.each do |recipie_food|
+      @total_value += recipie_food.quantity * recipie_food.food.price
     end
-    @items_count = @shopping_list.count
   end
 
   private
