@@ -1,4 +1,8 @@
+require 'recipes_helper'
+
 class RecipesController < ApplicationController
+  include RecipesHelper
+
   def index
     @recipes = Recipe.all
   end
@@ -17,11 +21,13 @@ class RecipesController < ApplicationController
     recipe.user = @user
 
     if recipe.save
-      flash[:success] = 'Recipe created successfully!'
-      redirect_to recipes_path
+      respond_to do |format|
+        format.html { redirect_to recipes_path, notice: 'Recipe created!' }
+      end
     else
-      flash.now[:error] = 'Please fill all the fields!'
-      render :new
+      respond_to do |format|
+        format.html { render :new, alret: 'Please fill all the fields!' }
+      end
     end
   end
 
@@ -30,6 +36,10 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     redirect_to recipes_path
+  end
+
+  def public
+    @public_recipes = Recipe.all.where(public: true)
   end
 
   private

@@ -3,7 +3,7 @@
   <%= link_to recipe_path(recipe.id) do %>
     <h2 class='mb-3'><%= recipe.name %></h2>
   <% end %>
-    <%= button_to 'Remove', recipe_path(recipe.id), method: :delete, class: 'btn btn-outline-danger'%>
+      <%= button_to 'Remove', recipe_path(recipe.id), method: :delete, class: 'btn btn-outline-danger'%>
   </div>
   <div class='col-6 d-flex flex-column justify-content-center'>
     <p><%= recipe.description %></p>
