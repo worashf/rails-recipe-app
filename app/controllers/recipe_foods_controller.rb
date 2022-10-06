@@ -2,11 +2,15 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_food.new
+    @foods = Food.where(user_id: current_user.id)
   end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_food.new(recipe_food_parametters)
+    @foods = Food.where(user_id: current_user.id)
+    @food = Food.find(recipe_food_parametters['food'])
+    @recipe_food = @recipe.recipe_food.new(quantity: recipe_food_parametters['quantity'].to_i, food: @food,
+                                           recipe: @recipe)
 
     if @recipe_food.save
       respond_to do |format|
@@ -49,6 +53,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_food_parametters
-    params.permit(:recipe_id, :food_id, :quantity)
+    params.require(:recipe_food).permit(:food, :quantity)
   end
 end
