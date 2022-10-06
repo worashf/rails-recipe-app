@@ -9,7 +9,7 @@ module RecipesHelper
       count_items = 0
       recipe_food.each do |rec_food|
         count_price += rec_food.food.price * rec_food.quantity
-        count_items += rec_food.quantity
+        count_items += 1
       end
       rec = { rec_id: recipe.id, price: count_price, items: count_items }
       recip_stats.push(rec)
