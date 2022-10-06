@@ -4,12 +4,12 @@ class RecipesController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:user)
   end
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = @recipe.recipe_food.all
+    @recipe_foods = RecipeFood.includes(:recipe).where(recipe_id: params[:id])
   end
 
   def new
