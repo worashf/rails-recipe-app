@@ -40,6 +40,7 @@ class RecipesController < ApplicationController
   end
 
   def public
+    @recipe_prices = public_recipes_stats
     @public_recipes = Recipe.all.where(public: true)
   end
 

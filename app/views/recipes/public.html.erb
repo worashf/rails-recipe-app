@@ -11,7 +11,12 @@
           <span>by <%= recipe.user.name %></span>
         </div>
         <div class='col-6 d-flex flex-column justify-content-center'>
-          <p><%= recipe.description %></p>
+          <% @recipe_prices.each do |recipe_food| %>
+            <% if recipe.id == recipe_food[:rec_id]%>
+              <p>Total items: <%= recipe_food[:items] %></p>
+              <p>Total price: <%= recipe_food[:price] %></p>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>

@@ -1,9 +1,15 @@
 <div class='d-flex flex-row mb-4 p-4 border justify-content-between'>
   <div class='col-4 d-flex flex-column text-center'>
-  <%= link_to recipe_path(recipe.id) do %>
-    <h2 class='mb-3'><%= recipe.name %></h2>
-  <% end %>
-      <%= button_to 'Remove', recipe_path(recipe.id), method: :delete, class: 'btn btn-outline-danger'%>
+    <% if user_signed_in? %>
+      <%= link_to recipe_path(recipe.id) do %>
+        <h2 class='mb-3'><%= recipe.name %></h2>
+      <% end %>
+    <% else %>
+      <h2 class='mb-3 text-primary'><u><%= recipe.name %></u></h2>
+    <% end %>
+      <% if current_user == recipe.user %>
+        <%= button_to 'Remove', recipe_path(recipe.id), method: :delete, class: 'btn btn-outline-danger'%>
+      <% end %>
   </div>
   <div class='col-6 d-flex flex-column justify-content-center'>
     <p><%= recipe.description %></p>
