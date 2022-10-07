@@ -52,7 +52,7 @@ class RecipeFoodsController < ApplicationController
 
   def shopping_list
     recipe = cookies[:recipe_id]
-    @recipe_foods = RecipeFood.all.where(recipe_id: recipe)
+    @recipe_foods = RecipeFood.where(recipe_id: recipe)
     @total_value = 0
     @items_count = @recipe_foods.count
 
