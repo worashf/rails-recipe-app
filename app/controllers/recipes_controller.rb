@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    cookies[:recipe_id] = params[:id]
     @recipe_foods = RecipeFood.where(recipe_id: params[:id])
   end
 
