@@ -31,7 +31,7 @@ To get a local copy up and running, fallow these simple steps:
 
 ### Install
 
-- boundle install
+- bundle install
 - npm install
 
 ### Usage
