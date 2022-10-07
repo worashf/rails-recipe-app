@@ -15,12 +15,12 @@
       </tr>
     </thead>
     <tbody>
-      <% if !@shopping_list.empty? %>
-        <% @shopping_list.each do |food| %>
+      <% if !@recipe_foods.empty? %>
+        <% @recipe_foods.each do |recipe_food| %>
           <tr>
-            <td><%= food.name %></td>
-            <td><%= food.quantity %> <%= food.measurment_unit %></td>
-            <td>$<%= food.price * food.quantity %></td>
+            <td><%= recipe_food.food.name %></td>
+            <td><%= recipe_food.quantity %> <%= recipe_food.food.measurment_unit %></td>
+            <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
           </tr>
         <% end %>
       <% else %>

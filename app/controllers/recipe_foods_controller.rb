@@ -2,7 +2,7 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_food.new
-    @foods = Food.includes(:user).where(user_id: current_user.id)
+    @foods = Food.where(user_id: current_user.id)
   end
 
   def create
@@ -51,16 +51,14 @@ class RecipeFoodsController < ApplicationController
   end
 
   def shopping_list
-    @foods = Food.includes(:recipe_food).where(user_id: current_user.id).where(recipe_food: { food_id: nil })
-    @shopping_list = []
+    recipe = cookies[:recipe_id]
+    @recipe_foods = RecipeFood.all.where(recipe_id: recipe)
     @total_value = 0
-    @item_count = 0
-    @foods.each do |food|
-      @shopping_list << food
-      @item_count += 1
-      @total_value += food.quantity * food.price
+    @items_count = @recipe_foods.count
+
+    @recipe_foods.each do |recipie_food|
+      @total_value += recipie_food.quantity * recipie_food.food.price
     end
-    @items_count = @shopping_list.count
   end
 
   private
