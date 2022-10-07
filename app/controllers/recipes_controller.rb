@@ -1,6 +1,7 @@
 require 'recipes_helper'
 
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: %i[show edit update destroy]
   include RecipesHelper
 
   def index
@@ -45,6 +46,10 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
   def recipe_parametters
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
