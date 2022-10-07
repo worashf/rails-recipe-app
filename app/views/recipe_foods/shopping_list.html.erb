@@ -1,0 +1,34 @@
+
+<section class ="container-fluid">
+<h1 class = "text-primary mt-3 text-center"> Shopping List </h1>
+
+<div class ="d-flex justify-content-between m-5">
+<h5 class="text-info">Amount of food items to buy: <span class="text-danger"> <%=@items_count%> </span> </h5>
+<h5 class="text-info">Total value of food needed: <span class="text-danger"> $ <%=@total_value%> </span> </h5>
+  </div>
+  <table class= "table table-striped table-bordered table-hover">
+    <thead class="table-info">
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if !@recipe_foods.empty? %>
+        <% @recipe_foods.each do |recipe_food| %>
+          <tr>
+            <td><%= recipe_food.food.name %></td>
+            <td><%= recipe_food.quantity %> <%= recipe_food.food.measurment_unit %></td>
+            <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="3" class ="text-info">No items yet. Only foods not added to any recipes are shown here.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>
